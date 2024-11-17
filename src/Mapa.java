@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.util.Random;
 
 public class Mapa {
     private  int [][] tiles;
@@ -9,8 +10,11 @@ public class Mapa {
     private static final int AGUA = 2;
     private static final int PAREDE = 3;
 
+    private Random random;
+
     public Mapa(int largura, int altura){
         tiles = new int[largura][altura];
+        random = new Random();
         gerarMapa();
     }
 
@@ -20,11 +24,26 @@ public class Mapa {
                 if(x == 0 || y == 0 || x == tiles.length -1 || y == tiles[0].length - 1){
                     tiles[x][y] = PAREDE;
                 }else{
-                    tiles[x][y] = CHAO;
+                    tiles[x][y] = gerarTileAleatorio();
                 }
             }
         }
     }
+
+    private int gerarTileAleatorio(){
+        int chance = random.nextInt(100);
+        if(chance < 30){
+            return GRAMA;
+        }else if(chance < 70){
+            return CHAO;
+        }
+        else if(chance < 90){
+            return AGUA;
+        }else{
+            return CHAO;
+        }
+    }
+
     public void desenhar(Graphics g){
         for(int x = 0;x < tiles.length;x++){
             for(int y = 0;y < tiles[x].length;y++){
