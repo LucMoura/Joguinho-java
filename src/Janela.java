@@ -35,7 +35,7 @@ public class Janela extends JFrame implements KeyListener {
         super.paint(g);
         mapa.desenhar(g);
         personagem.desenhar(g);
-        if(inimigo.getVida() < 0){
+        if(inimigo.getVida() > 0){
             inimigo.desenhar(g);
             inimigo.perseguir(personagem);
         }
