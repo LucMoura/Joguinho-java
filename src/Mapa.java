@@ -5,6 +5,9 @@ public class Mapa {
     private  int [][] tiles;
     private static final int TILE_SIZE = 32;
 
+    public static final int LARGURA = 25;
+    public static final int ALTURA = 19;
+
     private static final int CHAO = 0;
     private static final int GRAMA = 1;
     private static final int AGUA = 2;
