@@ -6,6 +6,7 @@ import java.awt.event.KeyListener;
 public class Janela extends JFrame implements KeyListener {
     private Mapa mapa;
     private Personagem personagem;
+    private Inimigo inimigo;
 
     public Janela() {
         super("Teste");
@@ -16,8 +17,10 @@ public class Janela extends JFrame implements KeyListener {
 
         mapa = new Mapa(Mapa.LARGURA, Mapa.ALTURA);
         personagem = new Personagem();
+        inimigo = new Inimigo(5, 5, 100, 10, "Gronk");
+
         personagem.setNome("Marcos");
-        personagem.setForca(10);
+        personagem.setForca(1000);
         personagem.setMana(50);
         personagem.moverPara(10, 10);
 
@@ -32,6 +35,10 @@ public class Janela extends JFrame implements KeyListener {
         super.paint(g);
         mapa.desenhar(g);
         personagem.desenhar(g);
+        if(inimigo.getVida() < 0){
+            inimigo.desenhar(g);
+            inimigo.perseguir(personagem);
+        }
     }
 
     @Override
@@ -45,6 +52,8 @@ public class Janela extends JFrame implements KeyListener {
             personagem.moverEsquerda();
         }else if(keyCode == KeyEvent.VK_D){
             personagem.moverDireita();
+        }else if(keyCode == KeyEvent.VK_SPACE){
+            personagem.atacar(inimigo);
         }
 
         repaint();
