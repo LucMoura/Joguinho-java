@@ -1,4 +1,4 @@
-public class Batalha {
+/*public class Batalha {
     private Personagem jogador;
     private Personagem inimigo;
 
@@ -12,3 +12,4 @@ public class Batalha {
         System.out.println(jogador.getVida() > 0 ? "Vitória!" : "Derrota");
     }
 }
+*/

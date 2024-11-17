@@ -14,9 +14,9 @@ public class Inimigo extends  Personagem{
     }
 
     public void perseguir(Personagem jogaodor){
-        if(x < jogaodor.getx()){
+        if(x < jogaodor.getX()){
             x++;
-        }else if (x > jogaodor.getx()){
+        }else if (x > jogaodor.getX()){
             x--;
         }
 

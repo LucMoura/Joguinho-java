@@ -9,9 +9,14 @@ public class Personagem {
 
     private static final int TAMANHO = 32;
 
-    public void atacar(Personagem alvo){
-        int dano = forca;
-        alvo.receberDano(dano);
+    public void atacar(Inimigo alvo){
+        if(this.estaNoAlcance(alvo)){
+            int dano = forca;
+            alvo.receberDano(dano);
+            System.out.println("Inimigo atacado! Dano: " + dano);
+        }else{
+            System.out.println("Inimigo fora de alcace");
+        }
     }
 
     public void receberDano(int dano){
@@ -50,7 +55,7 @@ public class Personagem {
         this.vida = vida;
     }
 
-    public int getx(){
+    public int getX(){
         return x;
     }
     public int getY(){
@@ -77,12 +82,19 @@ public class Personagem {
         }
     }
     public void moverDireita(){
-        if(x < Mapa.LARGURA -2)
-        this.x++;
+        if(x < Mapa.LARGURA -2) {
+            this.x++;
+        }
     }
     public void desenhar(Graphics g){
         g.setColor(Color.red);
         g.fillRect(x * TAMANHO, y * TAMANHO,TAMANHO, TAMANHO);
+    }
+
+    public boolean estaNoAlcance(Personagem alvo){
+        int alcanceAtaque = 2;
+        double distancia = Math.sqrt(Math.pow(this.x - alvo.getX(), 2) + Math.pow(this.y - alvo.getY(), 2));
+        return distancia <= alcanceAtaque;
     }
 
 }
