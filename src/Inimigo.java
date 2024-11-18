@@ -13,6 +13,8 @@ public class Inimigo extends  Personagem{
         this.y = y;
     }
 
+
+
     public void perseguir(Personagem jogaodor){
         if(x < jogaodor.getX()){
             x++;
@@ -38,5 +40,7 @@ public class Inimigo extends  Personagem{
     public int getY(){
         return y;
     }
+
+
 
 }
