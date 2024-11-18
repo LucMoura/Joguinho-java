@@ -14,6 +14,7 @@ public class Janela extends JFrame implements KeyListener {
     public Janela() {
         super("Teste");
 
+
         setSize(800, 600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
@@ -25,12 +26,13 @@ public class Janela extends JFrame implements KeyListener {
         random = new Random();
 
 
-
         personagem.setNome("Marcos");
         personagem.setForca(1000);
         personagem.setMana(50);
         personagem.moverPara(10, 10);
         personagem.setVida(100);
+
+        personagem.statusHeroi(personagem);
 
 
         addKeyListener(this);
@@ -48,6 +50,13 @@ public class Janela extends JFrame implements KeyListener {
             inimigo.perseguir(personagem);
         }
 
+
+        if(inimigo.inimigoIsproximo(personagem)){
+            personagem.receberDano(inimigo.getForca());
+            personagem.statusHeroi(personagem);
+        }
+
+        if(personagem.getVida() <= 0) System.exit(0);
 
         if(!inimigoIsAlive(inimigo)){
             int randomX, randomY;
@@ -78,6 +87,7 @@ public class Janela extends JFrame implements KeyListener {
             personagem.moverDireita();
         }else if(keyCode == KeyEvent.VK_SPACE){
             personagem.atacar(inimigo);
+
         }
 
         repaint();

@@ -41,6 +41,13 @@ public class Inimigo extends  Personagem{
         return y;
     }
 
+    public boolean inimigoIsproximo(Personagem jogador){
+        if(Math.abs(x - jogador.getX()) <= 1 && Math.abs(y - jogador.getY()) <= 1){
+            return true;
+        }
+        return false;
+    }
+
 
 
 }

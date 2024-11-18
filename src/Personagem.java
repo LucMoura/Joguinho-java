@@ -19,6 +19,12 @@ public class Personagem {
         }
     }
 
+    public void statusHeroi(Personagem personagem){
+        System.out.println("Nome: " + personagem.nome
+        + "\nMana: " + personagem.mana
+        + "\nForca: " + personagem.forca
+        + "\nVida: " + personagem.vida);
+    }
     public void receberDano(int dano){
         this.vida -= dano;
     }
